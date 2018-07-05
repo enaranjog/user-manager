@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	var datos = {
+			'name':'Enrique',
+			'id':'123'
+		};
+	
+	$.ajax({
+		type : 'POST',
+		dataType: "json",
+		headers: { 
+			'Accept': 'application/json',
+			'Content-Type': 'application/json' 
+		},
+		// make sure you respect the same origin policy with this url:
+		// http://en.wikipedia.org/wiki/Same_origin_policy
+		url : "http://localhost:8080/calculate_values/calculate_final_area",
+		header: "Access-Control-Allow-Origin",
+		data : {
+			'name':'Enrique',
+			'id':'123'
+		},
+		success : function(msg) {
+			document.write("<div>success: " + msg + "</div>");
+		},
+		error: function(msg) {
+			document.write("<div>error: " + msg + "</div>");
+		}
+	});
+	
+	jQuery.ajax({
+	    headers: { 
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json' 
+	    },
+	    'type': 'POST',
+	    'url': "http://localhost:8080/calculate_values/calculate_final_area",
+	    data : {
+			'name':'Enrique',
+			'id':'123'
+		},
+	    'dataType': 'json',
+		success : function(msg) {
+			document.write("<div>success: " + msg + "</div>");
+		},
+		error: function(msg) {
+			document.write("<div>error: " + msg + "</div>");
+		}
+	});
+	
+});
+	
+	
+</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="javascript/user.js">
+
+	
+</script>
+
+</head>
+<body>
+	<div class="container-fluid fondo-azul">
+		<div class="row" id="contenedor-titulo">
+			<div class="col-xs-4 col-xs-offset-4 text-center">
+				<h1 class="titulo">Entra con tu usuario o regístrate</h1>
+			</div>
+		</div>
+
+		<div class="row" id="contenedor-botones">
+			<div class="col-xs-4 col-xs-offset-4 text-center"> <!-- el offset establece cuántas columnas antes del elemento -->
+				<a class='btn btn-primary no-volver-button' id="entrar-button">Entrar</a>
+				<a class='btn btn-primary no-volver-button' id="registrarse-button">Registrarse</a>
+				<a class='btn btn-primary' id="volver-button">Volver</a>
+			</div>
+		</div>
+
+		<div id="contenedor-imagenes" class="container fondo-azul">
+			<img src="images/loading.gif" id="loading-image">
+		</div>
+		<div id="contenedor-login" class="container fondo-azul">
+			<form>
+				<div class="form-group">
+					<label for="input-email-login">Dirección de email</label>
+					<input type="email" class="form-control" id="input-email-login" aria-describedby="emailHelp" placeholder="Enter email">
+					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+				<div class="form-group">
+					<label for="login-password">Contraseña</label>
+					<input type="password" class="form-control" id="login-password" placeholder="Password">
+				</div>
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1">
+					<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				</div>
+				<button type="submit" id="submit-login-form-button" class="btn btn-primary">Entrar</button>
+			</form>
+		</div>
+
+		<div id="contenedor-register" class="container fondo-azul">
+			<form>
+				<div class="form-group">
+					<label for="input-email-register">Dirección de email</label>
+					<input type="email" class="form-control" id="input-email-register" aria-describedby="emailHelp" placeholder="Enter email">
+					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+				<div class="form-group">
+					<label for="register-password">Contraseña</label>
+					<input type="password" class="form-control" id="register-password" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="register-password-repeat">Repite contraseña</label>
+					<input type="password" class="form-control" id="register-password-repeat" placeholder="Password">
+					<span id='message'></span>
+				</div>
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1">
+					<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				</div>
+				<button type="submit" id="submit-register-form-button" class="btn btn-primary">Registrarse</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
