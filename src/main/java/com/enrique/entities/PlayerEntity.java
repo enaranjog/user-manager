@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "m_clue_card")
+@Table(name = "u_players")
 public class PlayerEntity {
 
 	@Id
@@ -17,15 +17,17 @@ public class PlayerEntity {
 
 	private String name;
 
-	@Column(name = "score_enrollments")
-	private Integer scoreEnrollments;
-
-	@Column(name = "score_credits")
-	private Integer scoreCredits;
-
 	private Integer position;
 	private String game;
 	private String userEmail;
+	
+	
+	`id` INT NOT NULL AUTO_INCREMENT,
+	  `name` VARCHAR(200) NOT NULL,
+	  `game` VARCHAR(200) NOT NULL,
+	  `user_email` VARCHAR(200) NOT NULL,
+	  `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	  `modified`
 
 	protected PlayerEntity() {
 	}
