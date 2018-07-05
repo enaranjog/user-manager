@@ -10,7 +10,7 @@ CREATE TABLE `user_manager`.`u_user` (
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` DATETIME NULL,
   UNIQUE KEY (`id`),
-  PRIMARY KEY (`id`, `email`)
+  PRIMARY KEY (`email`)
 );
 
 CREATE TABLE `user_manager`.`u_game` (
@@ -24,18 +24,27 @@ CREATE TABLE `user_manager`.`u_game` (
   FOREIGN KEY (`setting`) REFERENCES `card_game`.`m_setting`(`name`)
 );
 
-CREATE TABLE `user_manager`.`new_table` (
+CREATE TABLE `user_manager`.`u_players` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(200) NOT NULL,
-  `surname` VARCHAR(200) NULL,
-  `score_enrollments` INT NULL,
-  `score_credits` INT NULL,
-  `position` INT NULL,
   `game` VARCHAR(200) NOT NULL,
   `user_email` VARCHAR(200) NOT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` DATETIME NULL,
-  PRIMARY KEY (`id`),
+  UNIQUE KEY (`id`),
+  PRIMARY KEY (`name`,`user_email`),
   FOREIGN KEY (`user_email`) REFERENCES `user_manager`.`u_user` (`email`),
+  FOREIGN KEY (`game`) REFERENCES `user_manager`.`u_game` (`name`)
+);
+
+CREATE TABLE `user_manager`.`new_table` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `player_name` VARCHAR(200) NOT NULL,
+  `game` VARCHAR(200) NOT NULL,
+  `score_enrollments` INT NULL,
+  `score_credits` INT NULL,
+  `position` INT NULL,
+  UNIQUE KEY (`id`),
+  FOREIGN KEY (`player_name`) REFERENCES `user_manager`.`u_players` (`name`),
   FOREIGN KEY (`game`) REFERENCES `user_manager`.`u_game` (`name`)
 );

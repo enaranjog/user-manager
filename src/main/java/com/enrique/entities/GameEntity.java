@@ -36,6 +36,6 @@ public class GameEntity {
 
 	@Override
 	public String toString() {
-		return String.format("Setting[name='%s', setting='%s', id=%d]", name, setting, id);
+		return String.format("Game [name='%s', setting='%s', id=%d]", name, setting, id);
 	}
 }

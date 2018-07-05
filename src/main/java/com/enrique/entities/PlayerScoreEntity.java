@@ -8,15 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "m_clue_card")
-public class PlayerEntity {
+@Table(name = "u_player_score")
+public class PlayerScoreEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
-
+	@Column(name = "player_name")
+	private String playerName;
+	private String game;
 	@Column(name = "score_enrollments")
 	private Integer scoreEnrollments;
 
@@ -24,29 +25,30 @@ public class PlayerEntity {
 	private Integer scoreCredits;
 
 	private Integer position;
-	private String game;
-	private String userEmail;
 
-	protected PlayerEntity() {
+	protected PlayerScoreEntity() {
 	}
 
-	public PlayerEntity(String name, Integer scoreEnrollments, Integer scoreCredits, Integer position,
-			String game, String userEmail) {
+	public PlayerScoreEntity(String playerName, String game, Integer scoreEnrollments, Integer scoreCredits,
+			Integer position) {
 		super();
-		this.name = name;
+		this.playerName = playerName;
+		this.game = game;
 		this.scoreEnrollments = scoreEnrollments;
 		this.scoreCredits = scoreCredits;
 		this.position = position;
-		this.game = game;
-		this.userEmail = userEmail;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public String getGame() {
+		return game;
 	}
 
 	public Integer getScoreEnrollments() {
@@ -61,20 +63,10 @@ public class PlayerEntity {
 		return position;
 	}
 
-	public String getGame() {
-		return game;
-	}
-
-	public String getUserEmail() {
-		return userEmail;
-	}
-
 	@Override
 	public String toString() {
 		return String.format(
-				"Player [name='%s', scoreEnrollments='%s', scoreCredits='%s', "
-						+ "position='%s', game='%s', userEmail='%s', id=%d]",
-				name, scoreEnrollments, scoreCredits, position, game, userEmail, id);
+				"User [playerName='%s', game='%s', scoreEnrollments='%s', scoreCredits='%s', position='%s', id=%d]",
+				playerName, game, scoreEnrollments, scoreCredits, position, id);
 	}
-
 }
