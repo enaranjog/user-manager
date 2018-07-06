@@ -16,37 +16,11 @@ import com.enrique.repositories.UserRepository;
 import com.enrique.security.CheckUserAndPasswordService;
 
 @EnableJpaRepositories(basePackages = { "com.enrique.repositories" })
-@SpringBootApplication(scanBasePackages={"com.enrique.security", "com.enrique.manager"})
+@SpringBootApplication(scanBasePackages={"com.enrique.security", "com.enrique.managers", "com.enrique.controller"})
 @EntityScan(basePackages = { "com.enrique.entities" })
 public class UserManagerStarter {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserManagerStarter.class, args);
-	}
-
-
-	@Bean
-	public GameManager settingManager(GameRepository repo) {
-		return new GameManager(repo);
-	}
-	
-	@Bean
-	public PlayerManager clueCardManager(PlayerRepository repo) {
-		return new PlayerManager(repo);
-	}
-	
-//	@Bean
-//	public CheckUserAndPasswordService userPasswordService(UserRepository userRepo) {
-//		return new CheckUserAndPasswordService(userRepo);
-//	}
-	
-	@Bean
-	public UserManager userManager(UserRepository userRepo, CheckUserAndPasswordService userPasswordService) {
-		return new UserManager(userRepo, userPasswordService);
-	}
-
-	@Bean
-	public UserManagementController userManagerController(UserManager userManager) {
-		return new UserManagementController(userManager);
 	}
 }
