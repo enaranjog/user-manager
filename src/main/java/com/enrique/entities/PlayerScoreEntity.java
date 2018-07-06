@@ -29,9 +29,9 @@ public class PlayerScoreEntity {
 	protected PlayerScoreEntity() {
 	}
 
-	public PlayerScoreEntity(String playerName, String game, Integer scoreEnrollments, Integer scoreCredits,
+	public PlayerScoreEntity(Long id, String playerName, String game, Integer scoreEnrollments, Integer scoreCredits,
 			Integer position) {
-		super();
+		this.id = id;
 		this.playerName = playerName;
 		this.game = game;
 		this.scoreEnrollments = scoreEnrollments;

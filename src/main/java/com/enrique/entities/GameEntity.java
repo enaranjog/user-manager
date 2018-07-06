@@ -20,10 +20,14 @@ public class GameEntity {
 	protected GameEntity() {
 	}
 
-	public GameEntity(String name, String setting) {
-		super();
+	public GameEntity(Long id, String name, String setting) {
+		this.id = id;
 		this.name = name;
 		this.setting = setting;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {

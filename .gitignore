@@ -28,3 +28,6 @@ EPGBackOfficeService/.factorypath
 PortalWeb/.factorypath
 PortalWeb/.springBeans
 /PortalWeb/
+
+#springBeans
+.springBeans

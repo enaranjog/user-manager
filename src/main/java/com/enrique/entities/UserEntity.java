@@ -14,21 +14,26 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String name;
+	private String userName;
 	private String email;
 	private String password;
 
 	protected UserEntity() {
 	}
 
-	public UserEntity(String name, String email, String setting) {
-		this.name = name;
+	public UserEntity(Long id, String userName, String email, String setting) {
+		this.id = id;
+		this.userName = userName;
 		this.email = email;
 		this.password = setting;
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
 	public String getName() {
-		return name;
+		return userName;
 	}
 
 	public String getEmail() {
@@ -41,6 +46,6 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return String.format("User [name='%s', email='%s', id=%d]", name, email, id);
+		return String.format("User [name='%s', email='%s', id=%d]", userName, email, id);
 	}
 }
