@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.enrique.entities.UserEntity;
+import com.enrique.model.UserPasswordChecker;
 import com.enrique.repositories.UserRepository;
 import com.enrique.security.CheckUserAndPasswordService;
 
@@ -24,6 +25,13 @@ public class UserManager {
 		userPasswordService.checkUserAndPassword(email, password);
 		return userRepo.findByEmailIgnoreCase(email).orElse(new UserEntity(null, null, null, null));
 		//TODO check if we should throw an exception here
+	}
+	
+	public boolean registerUser(UserPasswordChecker userPasswordChecker) {
+		userPasswordChecker.validatePassword();
+		UserEntity userEntity = userPasswordChecker.getUserEntity();
+		userRepo.save(userEntity);
+		return true;
 	}
 	
 	public void saveOrUpdateUser(UserEntity userEntity) {

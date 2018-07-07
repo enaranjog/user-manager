@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.enrique.entities.UserEntity;
 import com.enrique.managers.UserManager;
+import com.enrique.model.UserPasswordChecker;
 
 @RestController
 public class UserManagementController {
@@ -23,9 +24,11 @@ public class UserManagementController {
 	}
 
 	@PostMapping(value = "/register_user")
-	@ResponseBody
-	public void registerUser(@RequestBody UserEntity user) {
-		System.out.println(user);
+//	@ResponseBody
+	public String registerUser(@RequestBody UserPasswordChecker userPasswordChecker) {
+		System.out.println(userPasswordChecker);
+		userManager.registerUser(userPasswordChecker);
+		return "User successfully registered: " + userPasswordChecker.getUserEntity().getEmail();
 	}
 
 	@GetMapping(value = "/retrieve_user")

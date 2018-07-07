@@ -16,16 +16,16 @@ public class UserEntity {
 
 	private String userName;
 	private String email;
-	private String password;
+	protected String password;
 
 	protected UserEntity() {
 	}
 
-	public UserEntity(Long id, String userName, String email, String setting) {
+	public UserEntity(Long id, String userName, String email, String password) {
 		this.id = id;
 		this.userName = userName;
 		this.email = email;
-		this.password = setting;
+		this.password = password;
 	}
 	
 	public Long getId() {
