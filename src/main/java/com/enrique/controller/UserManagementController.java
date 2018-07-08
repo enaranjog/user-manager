@@ -24,7 +24,7 @@ public class UserManagementController {
 	}
 
 	@PostMapping(value = "/register_user")
-//	@ResponseBody
+	@ResponseBody
 	public String registerUser(@RequestBody UserPasswordChecker userPasswordChecker) {
 		System.out.println(userPasswordChecker);
 		userManager.registerUser(userPasswordChecker);
@@ -35,6 +35,7 @@ public class UserManagementController {
 	@ResponseBody
 	public UserEntity retrieveUser(@RequestParam("user_email") String userEmail,
 			@RequestParam("password") String password) {
+		System.out.println("Trying to get user with email: " + userEmail);
 		return userManager.getUserByEmail(userEmail, password);
 	}
 }

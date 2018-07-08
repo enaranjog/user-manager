@@ -4,25 +4,25 @@ import com.enrique.entities.UserEntity;
 
 public class UserPasswordChecker {
 
-	private UserEntity user;
+	private UserEntity userEntity;
 	private String confirmPassword;
 
 	public UserPasswordChecker() {
 	}
 
-	public UserPasswordChecker(UserEntity user, String confirmPassword) {
-		this.user = user;
+	public UserPasswordChecker(UserEntity userEntity, String confirmPassword) {
+		this.userEntity = userEntity;
 		this.confirmPassword = confirmPassword;
 	}
 
 	public void validatePassword() {
-		if (!user.getPassword().equals(confirmPassword)) {
+		if (!userEntity.getPassword().equals(confirmPassword)) {
 			throw new UserManagementException("Las dos contraseñas no coinciden");
 		}
 	}
 
 	public UserEntity getUserEntity() {
-		return user;
+		return userEntity;
 	}
 
 	public String getConfirmPassword() {
@@ -30,7 +30,7 @@ public class UserPasswordChecker {
 	}
 
 	public void setUserEntity(UserEntity userEntity) {
-		this.user = userEntity;
+		this.userEntity = userEntity;
 	}
 
 	public void setConfirmPassword(String confirmPassword) {
@@ -39,7 +39,7 @@ public class UserPasswordChecker {
 
 	@Override
 	public String toString() {
-		return "UserPasswordChecker [userEntity=" + user + ", passwordMatch="
-				+ confirmPassword.equals(user.getPassword()) + "]";
+		return "UserPasswordChecker [userEntity=" + userEntity + ", passwordMatch="
+				+ confirmPassword.equals(userEntity.getPassword()) + "]";
 	}
 }
