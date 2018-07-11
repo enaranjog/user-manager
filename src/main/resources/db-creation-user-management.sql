@@ -23,13 +23,15 @@ CREATE TABLE `u_user` (
  CREATE TABLE `u_game` (
    `id` int(11) NOT NULL AUTO_INCREMENT,
    `name` varchar(200) NOT NULL,
+   `user` varchar(200) NOT NULL,
    `setting` varchar(200) NOT NULL,
    `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
    `modified` datetime DEFAULT NULL,
    PRIMARY KEY (`name`),
    UNIQUE KEY `id` (`id`),
    KEY `setting` (`setting`),
-   CONSTRAINT `u_game_ibfk_1` FOREIGN KEY (`setting`) REFERENCES `card_game`.`m_setting` (`name`)
+   CONSTRAINT `u_game_ibfk_1` FOREIGN KEY (`user`) REFERENCES `u_game` (`email`),
+   CONSTRAINT `u_game_ibfk_2` FOREIGN KEY (`setting`) REFERENCES `card_game`.`m_setting` (`name`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
  CREATE TABLE `u_players` (
