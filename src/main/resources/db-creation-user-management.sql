@@ -1,14 +1,9 @@
-select * from u_user;
 
-show create table u_user;
-show create table u_players;
-show create table u_game;
-show create table u_player_score;
 
 DROP SCHEMA IF EXISTS `user_manager`;
 CREATE SCHEMA `user_manager` DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE `u_user` (
+CREATE TABLE `user_manager`.`u_user` (
    `id` int(11) NOT NULL AUTO_INCREMENT,
    `name` varchar(200) DEFAULT NULL,
    `email` varchar(200) NOT NULL,
@@ -20,7 +15,7 @@ CREATE TABLE `u_user` (
    UNIQUE KEY `id` (`id`)
  ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
  
- CREATE TABLE `u_game` (
+ CREATE TABLE `user_manager`.`u_game` (
    `id` int(11) NOT NULL AUTO_INCREMENT,
    `name` varchar(200) NOT NULL,
    `user` varchar(200) NOT NULL,
@@ -30,11 +25,11 @@ CREATE TABLE `u_user` (
    PRIMARY KEY (`name`),
    UNIQUE KEY `id` (`id`),
    KEY `setting` (`setting`),
-   CONSTRAINT `u_game_ibfk_1` FOREIGN KEY (`user`) REFERENCES `u_game` (`email`),
+   CONSTRAINT `u_game_ibfk_1` FOREIGN KEY (`user`) REFERENCES `u_user` (`email`),
    CONSTRAINT `u_game_ibfk_2` FOREIGN KEY (`setting`) REFERENCES `card_game`.`m_setting` (`name`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
- CREATE TABLE `u_players` (
+ CREATE TABLE `user_manager`.`u_players` (
    `id` int(11) NOT NULL AUTO_INCREMENT,
    `name` varchar(200) NOT NULL,
    `game` varchar(200) NOT NULL,
@@ -49,12 +44,22 @@ CREATE TABLE `u_user` (
    CONSTRAINT `u_players_ibfk_2` FOREIGN KEY (`game`) REFERENCES `u_game` (`name`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
- CREATE TABLE `u_player_score` (
+ CREATE TABLE `user_manager`.`u_player_score` (
    `id` bigint(20) NOT NULL,
-   `game` varchar(255) DEFAULT NULL,
-   `player_name` varchar(255) DEFAULT NULL,
+   `game` varchar(200) DEFAULT NULL,
+   `player_name` varchar(200) DEFAULT NULL,
    `position` int(11) DEFAULT NULL,
    `score_credits` int(11) DEFAULT NULL,
    `score_enrollments` int(11) DEFAULT NULL,
    PRIMARY KEY (`id`)
- ) ENGINE=MyISAM DEFAULT CHARSET=utf8
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ CREATE TABLE `user_manager`.`u_player_game_mapping` (
+   `id` bigint(20) NOT NULL,
+   `game_name` varchar(200) DEFAULT NULL,
+   `player_name` varchar(200) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   CONSTRAINT `u_player_game_ibfk_1` FOREIGN KEY (`game_name`) REFERENCES `u_game` (`name`),
+   CONSTRAINT `u_player_game_ibfk_2` FOREIGN KEY (`player_name`) REFERENCES `u_players` (`name`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
