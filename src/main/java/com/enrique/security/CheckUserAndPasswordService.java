@@ -16,8 +16,8 @@ public class CheckUserAndPasswordService {
 	}
 
 	public void checkUserAndPassword(String email, String password) {
-		if (!userRepo.findByEmailIgnoreCase(email).orElse(new UserEntity(null, null, null, null)).getPassword()
-				.equals(password)) {
+		if (!password.equals(
+				userRepo.findByEmailIgnoreCase(email).orElse(new UserEntity(null, null, null, null)).getPassword())) {
 			throw new UserManagementException(String.format("The password for user email %s is not correct.", email));
 		}
 	}
