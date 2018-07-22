@@ -31,7 +31,13 @@ public class UserManager {
 	public boolean registerUser(UserPasswordChecker userPasswordChecker) {
 		userPasswordChecker.validatePassword();
 		UserEntity userEntity = userPasswordChecker.getUserEntity();
-		userRepo.save(userEntity);
-		return true;
+		String email = userPasswordChecker.getUserEntity().getEmail();
+		if(!userRepo.findByEmailIgnoreCase(email).isPresent()) {
+			userRepo.save(userEntity);
+			return true;
+		} else {
+			System.out.println("User already registered: " + email);
+			return false;
+		}
 	}
 }
